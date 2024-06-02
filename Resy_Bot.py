@@ -89,7 +89,7 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
 
         # Start the bot
         with sync_playwright() as p:
-            browser = p.firefox.launch(headless=True, args=[
+            browser = p.firefox.launch(headless=False, args=[
                 '--enable-logging=stderr',
                 '--v=1'
             ])
@@ -118,11 +118,11 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
             logging.info("Logged in successfully.")
             random_delay(2, 5)
             # Go to restaurant page
-            breakpoint()
             page.goto(restaurant_link, wait_until='networkidle')
             page.wait_for_timeout(10000)
             # Take screenshot for debugging
             page.screenshot(path="debugging_photos/screenshot1.png")
+            breakpoint()
             menu = page.wait_for_selector(
                 f'//div[contains(@class,"ShiftInventory__shift")][h2[text()="{period_wanted.lower()}"]]', timeout=10000)
             selected_reservation = menu.query_selector(
