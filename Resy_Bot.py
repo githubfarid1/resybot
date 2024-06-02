@@ -89,9 +89,10 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
 
         # Start the bot
         with sync_playwright() as p:
-            browser = p.firefox.launch(headless=True, args=[
+            browser = p.chromium.launch(headless=False, args=[
                 '--enable-logging=stderr',
-                '--v=1', '--single-process', '--disable-gpu'
+                '--v=1', 
+                # '--single-process', '--disable-gpu'
             ])
             proxy_server = "http://kpeqkzlp:0sdrl0jganhc@38.154.227.167:5868"
 
