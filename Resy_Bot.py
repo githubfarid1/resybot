@@ -139,6 +139,7 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
             context = browser.new_context(
                 user_agent=user_agent,
                 # viewport={'width': random.randint(1200, 1920), 'height': random.randint(900, 1080)},
+                viewport={'width': 1200, 'height': 900},
                 permissions=['geolocation', 'notifications'],
                 java_script_enabled=True,
                 # bypass_csp=True,
