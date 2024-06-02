@@ -24,7 +24,7 @@ import logging
 load_dotenv('settings.env')
 email = os.getenv('RESY_EMAIL')
 password = os.getenv('RESY_PASSWORD')
-headless = False
+headless = True
 
 # made the file mode to overwrite the log file
 logging.basicConfig(filename='bot.log', filemode='w', level=logging.INFO,  format='%(asctime)s - %(levelname)s - %(filename)s - %(lineno)d - %(message)s')
