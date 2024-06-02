@@ -126,18 +126,18 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
                 # '--hide-scrollbars',
                 # '--mute-audio'
             ] 
-            browser = p.chromium.launch(headless=True, args=browser_args)
+            # browser = p.chromium.launch(headless=True, args=browser_args)
 
-            # browser = p.chromium.launch(headless=False, args=[
-            #     '--enable-logging=stderr',
-            #     '--v=1', 
-            # ])
+            browser = p.firefox.launch(headless=True, args=[
+                '--enable-logging=stderr',
+                '--v=1', 
+            ])
             proxy_server = "http://kpeqkzlp:0sdrl0jganhc@38.154.227.167:5868"
 
             context = browser.new_context(
                 user_agent=user_agent,
                 viewport={'width': random.randint(1200, 1920), 'height': random.randint(900, 1080)},
-                permissions=['geolocation', 'notifications'],
+                permissions=['notifications'],
                 ignore_https_errors=True, #
                 java_script_enabled=True,
                 #proxy = {
