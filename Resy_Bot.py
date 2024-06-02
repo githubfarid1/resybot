@@ -114,17 +114,17 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
                 # '--disable-features=Translate',
                 # '--disable-hang-monitor',
                 '--disable-ipc-flooding-protection',
-                '--disable-popup-blocking',
-                '--disable-prompt-on-repost',
-                '--disable-renderer-backgrounding',
-                '--disable-sync',
-                '--force-color-profile=srgb',
-                '--metrics-recording-only',
-                '--enable-automation',
-                '--password-store=basic',
-                '--use-mock-keychain',
+                # '--disable-popup-blocking',
+                # '--disable-prompt-on-repost',
+                # '--disable-renderer-backgrounding',
+                # '--disable-sync',
+                # '--force-color-profile=srgb',
+                # '--metrics-recording-only',
+                # '--enable-automation',
+                # '--password-store=basic',
+                # '--use-mock-keychain',
                 # '--hide-scrollbars',
-                '--mute-audio'
+                # '--mute-audio'
             ] 
             browser = p.chromium.launch(headless=True, args=browser_args)
 
