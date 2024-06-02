@@ -91,7 +91,7 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
         with sync_playwright() as p:
             browser = p.firefox.launch(headless=True, args=[
                 '--enable-logging=stderr',
-                '--v=1'
+                '--v=1', '--single-process', '--disable-gpu'
             ])
             proxy_server = "http://kpeqkzlp:0sdrl0jganhc@38.154.227.167:5868"
 
