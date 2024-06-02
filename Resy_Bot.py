@@ -123,10 +123,8 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
             # Take screenshot for debugging
             page.screenshot(path="debugging_photos/screenshot1.png")
             breakpoint()
-            menu = page.wait_for_selector(
-                f'//div[contains(@class,"ShiftInventory__shift")][h2[text()="{period_wanted.lower()}"]]', timeout=10000)
-            selected_reservation = menu.query_selector(
-                f'//button[div[text()="{time_wanted}"]][div[text()="{reservation_type.lower().title()}"]]')
+            menu = page.wait_for_selector(f'//div[contains(@class,"ShiftInventory__shift")][h2[text()="{period_wanted.lower()}"]]', timeout=10000)
+            selected_reservation = menu.query_selector(f'//button[div[text()="{time_wanted}"]][div[text()="{reservation_type.lower().title()}"]]')
             if selected_reservation:
                 logging.info(
                     f"Reservation available at {time_wanted} for {seats} people {reservation_type.lower().title()}")
