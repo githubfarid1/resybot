@@ -89,7 +89,7 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
 
         # Start the bot
         with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True, args=[
+            browser = p.chromium.launch(headless=False, args=[
                 '--enable-logging=stderr',
                 '--v=1', 
                 '--single-process', 
