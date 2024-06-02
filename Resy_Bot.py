@@ -9,6 +9,7 @@ import time
 from playwright.sync_api import sync_playwright
 from playwright_stealth import stealth_sync
 import logging
+import re
 #tesx
 
 # from selenium import webdriver
@@ -24,7 +25,7 @@ import logging
 load_dotenv('settings.env')
 email = os.getenv('RESY_EMAIL')
 password = os.getenv('RESY_PASSWORD')
-# headless = True
+# headless = False
 headless = True
 
 
@@ -56,7 +57,9 @@ def login_to_resy(page, email, password):
     print("login")
     breakpoint()
     page.click('[name="login_form"] button', timeout=5000)
+    page.get_by_role("button", name=re.compile("continue", re.IGNORECASE)).click()
     # page.click("text=Continue", timeout=5000)
+    # page.click('/html/body/div[8]/div/div/div/div/div[2]/div[2]/div/form/div/button', timeout=5000)
     page.evaluate("document.querySelector('[name=\"login_form\"] button').click()")
     page.screenshot(path='debugging_photos/screenshot2.png')
     logging.info("Logged in and screenshot taken.")
