@@ -24,7 +24,7 @@ import logging
 load_dotenv('settings.env')
 email = os.getenv('RESY_EMAIL')
 password = os.getenv('RESY_PASSWORD')
-headless = True
+headless = False
 
 # made the file mode to overwrite the log file
 logging.basicConfig(filename='bot.log', filemode='w', level=logging.INFO,  format='%(asctime)s - %(levelname)s - %(filename)s - %(lineno)d - %(message)s')
@@ -132,17 +132,17 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
             browser = p.chromium.launch(headless=headless, args=[
                 '--enable-logging=stderr',
                 '--v=1', 
-                '--start-maximized'
+                # '--start-maximized'
             ])
             proxy_server = "http://kpeqkzlp:0sdrl0jganhc@38.154.227.167:5868"
 
             context = browser.new_context(
                 user_agent=user_agent,
                 # viewport={'width': random.randint(1200, 1920), 'height': random.randint(900, 1080)},
-                # viewport={'width': 1200, 'height': 900},
+                viewport={'width': 1920, 'height': 1080},
                 permissions=['geolocation', 'notifications'],
                 java_script_enabled=True,
-                no_viewport=True,
+                # no_viewport=True,
                 # bypass_csp=True,
                 # locale='US_en'
                 #proxy = {
