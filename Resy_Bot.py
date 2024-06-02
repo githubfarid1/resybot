@@ -24,7 +24,9 @@ import logging
 load_dotenv('settings.env')
 email = os.getenv('RESY_EMAIL')
 password = os.getenv('RESY_PASSWORD')
+# headless = True
 headless = True
+
 
 # made the file mode to overwrite the log file
 logging.basicConfig(filename='bot.log', filemode='w', level=logging.INFO,  format='%(asctime)s - %(levelname)s - %(filename)s - %(lineno)d - %(message)s')
@@ -54,6 +56,7 @@ def login_to_resy(page, email, password):
     print("login")
     breakpoint()
     page.click('[name="login_form"] button', timeout=5000)
+    # page.click("text=Continue", timeout=5000)
     page.evaluate("document.querySelector('[name=\"login_form\"] button').click()")
     page.screenshot(path='debugging_photos/screenshot2.png')
     logging.info("Logged in and screenshot taken.")
@@ -129,7 +132,7 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
             ] 
             # browser = p.chromium.launch(headless=True, args=browser_args)
 
-            browser = p.chromium.launch(headless=headless, args=[
+            browser = p.firefox.launch(headless=headless, args=[
                 '--enable-logging=stderr',
                 '--v=1', 
                 # '--start-maximized'
@@ -159,6 +162,7 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
             logging.info("Bot is running...")
             # Login to Resy
             page.goto("https://resy.com")
+            breakpoint()
             login_to_resy(page, email, password)
             logging.info("Logged in successfully.")
             random_delay(2, 5)
