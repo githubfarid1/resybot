@@ -138,6 +138,7 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
                 user_agent=user_agent,
                 viewport={'width': random.randint(1200, 1920), 'height': random.randint(900, 1080)},
                 permissions=['geolocation', 'notifications'],
+                ignore_https_errors=True, #
                 java_script_enabled=True,
                 #proxy = {
                 #'server': proxy_server
