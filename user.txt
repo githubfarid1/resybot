@@ -1,0 +1,2 @@
+ssh root@216.107.136.74
+password : a27967b*Pn99P7Sch5R8=u
