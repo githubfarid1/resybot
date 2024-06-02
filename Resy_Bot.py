@@ -89,7 +89,7 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
 
         # Start the bot
         with sync_playwright() as p:
-            browser = p.firefox.launch(headless=False, args=[
+            browser = p.firefox.launch(headless=True, args=[
                 '--enable-logging=stderr',
                 '--v=1'
             ])
