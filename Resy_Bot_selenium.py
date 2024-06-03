@@ -63,7 +63,7 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
         options.add_argument("--disable-infobars")
         options.add_argument("--mute-audio")
         driver = webdriver.Chrome(options=options)
-
+        breakpoint()
         driver.get("https://resy.com")
         login_to_resy(driver, email, password)
         random_delay(2, 5)
