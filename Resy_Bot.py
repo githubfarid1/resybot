@@ -200,10 +200,11 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
             random_delay(2, 5)
             # Go to restaurant page
             page.goto(restaurant_link, wait_until='networkidle')
-            page.wait_for_timeout(20000)
+            # page.wait_for_timeout(20000)
             # Take screenshot for debugging
-            page.screenshot(path="debugging_photos/screenshot1.png")
             breakpoint()
+            page.screenshot(path="debugging_photos/screenshot1.png")
+            # breakpoint()
             menu = page.wait_for_selector(f'//div[contains(@class,"ShiftInventory__shift")][h2[text()="{period_wanted.lower()}"]]', timeout=10000)
             selected_reservation = menu.query_selector(f'//button[div[text()="{time_wanted}"]][div[text()="{reservation_type.lower().title()}"]]')
             if selected_reservation:
