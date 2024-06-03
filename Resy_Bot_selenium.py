@@ -64,6 +64,7 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
         options.add_argument("--disable-notifications")
         options.add_argument("--disable-infobars")
         options.add_argument("--mute-audio")
+        options.add_argument("--headless=new") 
         # driver = webdriver.Chrome(options=options)
         breakpoint()
         driver = webdriver.Chrome(service=Service(service=Service(executable_path=os.path.join(os.getcwd(), "webdriver", "chromedriver"))), options=options)
