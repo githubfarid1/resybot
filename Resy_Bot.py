@@ -187,6 +187,7 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
             page.on("requestfailed", lambda request: logging.error(f"REQUEST FAILED: {request.url} {request.failure}"))
             logging.info("Bot is running...")
             # Login to Resy
+            breakpoint()
             page.goto("https://resy.com")
                     
             # breakpoint()
