@@ -69,7 +69,7 @@ def login_to_resy(page, email, password):
     except Exception:
         logging.info("No announcement modal to close.")
     breakpoint()
-    page.click("text=Log in", timeout=5000)
+    page.click("text=Log in", timeout=10000)
     page.click("text=Use Email and Password instead", timeout=5000)
 
     page.fill('input[name="email"]', email)
@@ -184,7 +184,7 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
             page.on("requestfailed", lambda request: logging.error(f"REQUEST FAILED: {request.url} {request.failure}"))
             logging.info("Bot is running...")
             # Login to Resy
-            breakpoint()
+            # breakpoint()
             page.goto("https://resy.com", timeout=60000)
                     
             # breakpoint()
