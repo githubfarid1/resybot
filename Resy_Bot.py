@@ -68,16 +68,16 @@ def login_to_resy(page, email, password):
         page.click('.AnnouncementModal__icon-close')
     except Exception:
         logging.info("No announcement modal to close.")
-    breakpoint()
+    # breakpoint()
     page.click("text=Log in", timeout=10000)
     page.click("text=Use Email and Password instead", timeout=5000)
 
     page.fill('input[name="email"]', email)
     page.fill('input[name="password"]', password)
     print("login")
-    # breakpoint()
+    breakpoint()
     # api_request_context = context.request
-    page.request.post("https://api.resy.com/3/auth/password", headers=headers, data=payload,)
+    # page.request.post("https://api.resy.com/3/auth/password", headers=headers, data=payload,)
     
     page.click('[name="login_form"] button', timeout=10000)
     # time.sleep(10)
