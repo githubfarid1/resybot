@@ -169,8 +169,8 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
                 permissions=['geolocation', 'notifications'],
                 java_script_enabled=True,
                 # no_viewport=True,
-                # bypass_csp=True,
-                # locale='US_en'
+                bypass_csp=True,
+                locale='US_en'
                 #proxy = {
                 #'server': proxy_server
             #}
