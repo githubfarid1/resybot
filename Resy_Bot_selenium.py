@@ -10,6 +10,8 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from dotenv import load_dotenv
+from webdriver_manager.chrome import ChromeDriverManager as CM
+from selenium.webdriver.chrome.service import Service
 
 load_dotenv('settings.env')
 email = os.getenv('RESY_EMAIL')
@@ -62,7 +64,8 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
         options.add_argument("--disable-notifications")
         options.add_argument("--disable-infobars")
         options.add_argument("--mute-audio")
-        driver = webdriver.Chrome(options=options)
+        # driver = webdriver.Chrome(options=options)
+        driver = webdriver.Chrome(service=Service(CM(version="114.0.5735.90").install()), options=options)
         breakpoint()
         driver.get("https://resy.com")
         login_to_resy(driver, email, password)
