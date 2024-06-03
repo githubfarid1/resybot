@@ -66,7 +66,7 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
         options.add_argument("--mute-audio")
         # driver = webdriver.Chrome(options=options)
         breakpoint()
-        driver = webdriver.Chrome(service=Service(CM(version="114.0.5735.90").install()), options=options)
+        driver = webdriver.Chrome(service=Service(CM().install()), options=options)
         # breakpoint()
         driver.get("https://resy.com")
         login_to_resy(driver, email, password)
