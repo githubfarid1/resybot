@@ -10,6 +10,7 @@ from playwright.sync_api import sync_playwright
 from playwright_stealth import stealth_sync
 import logging
 import re
+from bs4 import BeautifulSoup
 #tesx
 
 # from selenium import webdriver
@@ -27,7 +28,26 @@ email = os.getenv('RESY_EMAIL')
 password = os.getenv('RESY_PASSWORD')
 # headless = False
 headless = True
+headers = {
+    'accept': 'application/json, text/plain, */*',
+    'accept-language': 'en-US,en;q=0.9,id;q=0.8',
+    'authorization': 'ResyAPI api_key="VbWk7s3L4KiK5fzlO7JD3Q5EYolJI7n5"',
+    'cache-control': 'no-cache',
+    'content-type': 'application/x-www-form-urlencoded',
+    'origin': 'https://resy.com',
+    'priority': 'u=1, i',
+    'referer': 'https://resy.com/',
+    'sec-ch-ua': '"Microsoft Edge";v="125", "Chromium";v="125", "Not.A/Brand";v="24"',
+    'sec-ch-ua-mobile': '?0',
+    'sec-ch-ua-platform': '"Windows"',
+    'sec-fetch-dest': 'empty',
+    'sec-fetch-mode': 'cors',
+    'sec-fetch-site': 'same-site',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 Edg/125.0.0.0',
+    'x-origin': 'https://resy.com',
+}
 
+payload = 'email=aseasease2005b%40gmail.com&password=6EAMGVu8mpwWb7*'
 
 # made the file mode to overwrite the log file
 logging.basicConfig(filename='bot.log', filemode='w', level=logging.INFO,  format='%(asctime)s - %(levelname)s - %(filename)s - %(lineno)d - %(message)s')
@@ -56,8 +76,11 @@ def login_to_resy(page, email, password):
     page.fill('input[name="password"]', password)
     print("login")
     breakpoint()
+    # api_request_context = context.request
+    # page.request.post("https://api.resy.com/3/auth/password", headers=headers, data=payload,)
+    
     page.click('[name="login_form"] button', timeout=5000)
-    page.get_by_role("button", name=re.compile("continue", re.IGNORECASE)).click()
+    # page.get_by_role("button", name=re.compile("continue", re.IGNORECASE)).click()
     # page.click("text=Continue", timeout=5000)
     # page.click('/html/body/div[8]/div/div/div/div/div[2]/div[2]/div/form/div/button', timeout=5000)
     page.evaluate("document.querySelector('[name=\"login_form\"] button').click()")
@@ -165,7 +188,8 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
             logging.info("Bot is running...")
             # Login to Resy
             page.goto("https://resy.com")
-            breakpoint()
+                    
+            # breakpoint()
             login_to_resy(page, email, password)
             logging.info("Logged in successfully.")
             random_delay(2, 5)
