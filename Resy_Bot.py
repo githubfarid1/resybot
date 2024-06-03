@@ -126,8 +126,7 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
                 # '--window-size=1300,570',
                 # '--window-position=000,000',
                 # '--disable-dev-shm-usage',
-                # '--no-sandbox',
-                # '--disable-web-security',
+                # ,
                 # '--disable-features=site-per-process',
                 # '--disable-setuid-sandbox',
                 # '--disable-accelerated-2d-canvas',
@@ -136,7 +135,6 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
                 # '--use-gl=egl',
                 # '--disable-blink-features=AutomationControlled',
                 # '--disable-background-networking',
-                # '--enable-features=NetworkService,NetworkServiceInProcess',
                 # '--disable-background-timer-throttling',
                 # '--disable-backgrounding-occluded-windows',
                 # '--disable-breakpad',
@@ -147,21 +145,28 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
                 # '--disable-features=Translate',
                 # '--disable-hang-monitor',
                 '--disable-ipc-flooding-protection',
-                # '--disable-popup-blocking',
+                # ,
                 # '--disable-prompt-on-repost',
                 # '--disable-renderer-backgrounding',
                 # '--disable-sync',
                 # '--force-color-profile=srgb',
                 # '--metrics-recording-only',
-                # '--enable-automation',
+                # ,
                 # '--password-store=basic',
                 # '--use-mock-keychain',
                 # '--hide-scrollbars',
                 # '--mute-audio'
             ] 
             # browser = p.chromium.launch(headless=True, args=browser_args)
-
-            browser = p.firefox.launch(headless=headless, args=['--enable-logging=stderr','--v=1'])
+            wargs = []
+            # wargs.append('--enable-logging=stderr')
+            wargs.append('--v=1')
+            wargs.append('--no-sandbox')
+            wargs.append('--enable-features=NetworkService,NetworkServiceInProcess')
+            wargs.append('--enable-automation')
+            wargs.append('--disable-popup-blocking')
+            wargs.append('--disable-web-security')
+            browser = p.chromium.launch(headless=headless, args=wargs)
             proxy_server = "http://kpeqkzlp:0sdrl0jganhc@38.154.227.167:5868"
 
             context = browser.new_context(
