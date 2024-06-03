@@ -75,16 +75,16 @@ def login_to_resy(page, email, password):
     page.fill('input[name="email"]', email)
     page.fill('input[name="password"]', password)
     print("login")
-    breakpoint()
+    # breakpoint()
     # api_request_context = context.request
-    # page.request.post("https://api.resy.com/3/auth/password", headers=headers, data=payload,)
+    page.request.post("https://api.resy.com/3/auth/password", headers=headers, data=payload,)
     
-    page.click('[name="login_form"] button', timeout=5000)
-    time.sleep(10)
+    page.click('[name="login_form"] button', timeout=10000)
+    # time.sleep(10)
     # page.get_by_role("button", name=re.compile("continue", re.IGNORECASE)).click()
     # page.click("text=Continue", timeout=5000)
     # page.click('/html/body/div[8]/div/div/div/div/div[2]/div[2]/div/form/div/button', timeout=5000)
-    # page.evaluate("document.querySelector('[name=\"login_form\"] button').click()")
+    page.evaluate("document.querySelector('[name=\"login_form\"] button').click()")
     page.screenshot(path='debugging_photos/screenshot2.png')
     logging.info("Logged in and screenshot taken.")
 
