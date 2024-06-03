@@ -57,9 +57,8 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
     try:
         restaurant_link = update_restaurant_link(restaurant_link, date_wanted, seats)
 
-        options = Options()
+        options = webdriver.ChromeOptions()
         # adding headless mode
-        options.headless = True
         options.add_argument("--start-maximized")
         options.add_argument("--disable-notifications")
         options.add_argument("--disable-infobars")
@@ -68,6 +67,7 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
         # driver = webdriver.Chrome(options=options)
         breakpoint()
         driver = webdriver.Chrome(service=Service(executable_path=os.path.join(os.getcwd(), "webdriver", "chromedriver")), options=options)
+   
         # breakpoint()
         driver.get("https://resy.com")
         login_to_resy(driver, email, password)
