@@ -185,7 +185,7 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
             logging.info("Bot is running...")
             # Login to Resy
             breakpoint()
-            page.goto("https://resy.com")
+            page.goto("https://resy.com", timeout=60000)
                     
             # breakpoint()
             login_to_resy(page, email, password)
