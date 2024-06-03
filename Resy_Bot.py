@@ -177,7 +177,7 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
             )
 
             page = context.new_page()
-            # stealth_sync(page)
+            stealth_sync(page)
             page.on("console", lambda msg: logging.debug(f"PAGE LOG: {msg.text}"))
             page.on("pageerror", lambda msg: logging.error(f"PAGE ERROR: {msg}"))
             page.on("response", lambda response: logging.debug(f"RESPONSE: {response.url} {response.status}"))
