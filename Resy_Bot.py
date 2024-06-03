@@ -104,7 +104,7 @@ def reserve_restaurant(page, selected_reservation):
 
 
 def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reservation_type):
-    breakpoint()
+    # breakpoint()
     try:
         # update the restaurant link
         restaurant_link = update_restaurant_link(restaurant_link, date_wanted, seats)
@@ -159,7 +159,7 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
             ] 
             # browser = p.chromium.launch(headless=True, args=browser_args)
 
-            browser = p.firefox.launch(headless=headless, args=['--enable-logging=stderr','--v=1'])
+            browser = p.chromium.launch(headless=headless, args=['--enable-logging=stderr','--v=1'])
             proxy_server = "http://kpeqkzlp:0sdrl0jganhc@38.154.227.167:5868"
 
             context = browser.new_context(
