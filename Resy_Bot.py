@@ -192,7 +192,7 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
             logging.info("Logged in successfully.")
             random_delay(2, 5)
             # Go to restaurant page
-            page.goto(restaurant_link)#, wait_until='networkidle')
+            page.goto(restaurant_link, wait_until='networkidle')
             page.wait_for_timeout(10000)
             # Take screenshot for debugging
             page.screenshot(path="debugging_photos/screenshot1.png")
