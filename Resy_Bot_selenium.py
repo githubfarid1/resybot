@@ -67,7 +67,7 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
         options.add_argument("--headless=new") 
         # driver = webdriver.Chrome(options=options)
         breakpoint()
-        driver = webdriver.Chrome(service=Service(service=Service(executable_path=os.path.join(os.getcwd(), "webdriver", "chromedriver"))), options=options)
+        driver = webdriver.Chrome(service=Service(executable_path=os.path.join(os.getcwd(), "webdriver", "chromedriver")), options=options)
         # breakpoint()
         driver.get("https://resy.com")
         login_to_resy(driver, email, password)
