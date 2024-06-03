@@ -80,6 +80,7 @@ def login_to_resy(page, email, password):
     # page.request.post("https://api.resy.com/3/auth/password", headers=headers, data=payload,)
     
     page.click('[name="login_form"] button', timeout=5000)
+    time.sleep(10)
     # page.get_by_role("button", name=re.compile("continue", re.IGNORECASE)).click()
     # page.click("text=Continue", timeout=5000)
     # page.click('/html/body/div[8]/div/div/div/div/div[2]/div[2]/div/form/div/button', timeout=5000)
