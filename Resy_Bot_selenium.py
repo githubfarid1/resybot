@@ -59,7 +59,7 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
 
         options = Options()
         # adding headless mode
-        # options.headless = True
+        options.headless = True
         options.add_argument("--start-maximized")
         options.add_argument("--disable-notifications")
         options.add_argument("--disable-infobars")
