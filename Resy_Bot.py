@@ -87,7 +87,7 @@ def login_to_resy(page, email, password):
     # page.click('/html/body/div[8]/div/div/div/div/div[2]/div[2]/div/form/div/button', timeout=5000)
     
     # breakpoint()
-    page.evaluate("document.querySelector('[name=\"login_form\"] button').click()")
+    # page.evaluate("document.querySelector('[name=\"login_form\"] button').click()")
     page.evaluate("() => document.fonts.ready")
     # breakpoint()
     
