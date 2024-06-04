@@ -71,7 +71,7 @@ def login_to_resy(page, email, password):
         logging.info("No announcement modal to close.")
     # breakpoint()
     page.click("text=Log in", timeout=10000)
-    page.click("text=Use Email and Password instead", timeout=5000)
+    page.click("text=Use Email and Password instead", timeout=30000)
 
     page.fill('input[name="email"]', email)
     page.fill('input[name="password"]', password)
