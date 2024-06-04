@@ -26,9 +26,9 @@ from bs4 import BeautifulSoup
 load_dotenv('settings.env')
 email = os.getenv('RESY_EMAIL')
 password = os.getenv('RESY_PASSWORD')
-headless = False
 # PW_TEST_SCREENSHOT_NO_FONTS_READY = 1
-# headless = True
+# headless = False
+headless = True
 '''headers = {
     'accept': 'application/json, text/plain, */*',
     'accept-language': 'en-US,en;q=0.9,id;q=0.8',
