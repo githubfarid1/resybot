@@ -211,8 +211,7 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
             # Go to restaurant page
             page.goto(restaurant_link, wait_until='networkidle')
             # page.goto(restaurant_link)
-
-            # page.wait_for_timeout(20000)
+            page.wait_for_timeout(20000)
             # Take screenshot for debugging
             # breakpoint()
             page.evaluate("() => document.fonts.ready")
