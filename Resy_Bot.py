@@ -10,18 +10,6 @@ from playwright.sync_api import sync_playwright
 from playwright_stealth import stealth_sync
 import logging
 import re
-from bs4 import BeautifulSoup
-#tesx
-
-# from selenium import webdriver
-# from selenium.webdriver.firefox.options import Options
-
-# options = Options()
-# options.headless = True  # Enable headless mode for Firefox
-
-# driver = webdriver.Firefox(options=options)
-# driver.get("https://resy.com")
-
 
 load_dotenv('settings.env')
 email = os.getenv('RESY_EMAIL')
@@ -54,9 +42,6 @@ def login_to_resy(page, email, password):
 
     page.fill('input[name="email"]', email)
     page.fill('input[name="password"]', password)
-    # print("login")
-    # breakpoint()
-    # api_request_context = context.request
     # page.request.post("https://api.resy.com/3/auth/password", headers=headers, data=payload,)
     
     page.click('[name="login_form"] button', timeout=10000)
