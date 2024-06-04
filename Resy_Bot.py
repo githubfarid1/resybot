@@ -26,8 +26,9 @@ from bs4 import BeautifulSoup
 load_dotenv('settings.env')
 email = os.getenv('RESY_EMAIL')
 password = os.getenv('RESY_PASSWORD')
-# headless = False
-headless = True
+headless = False
+# PW_TEST_SCREENSHOT_NO_FONTS_READY = 1
+# headless = True
 '''headers = {
     'accept': 'application/json, text/plain, */*',
     'accept-language': 'en-US,en;q=0.9,id;q=0.8',
@@ -85,6 +86,9 @@ def login_to_resy(page, email, password):
     # page.click("text=Continue", timeout=5000)
     # page.click('/html/body/div[8]/div/div/div/div/div[2]/div[2]/div/form/div/button', timeout=5000)
     # page.evaluate("document.querySelector('[name=\"login_form\"] button').click()")
+    
+    # breakpoint()
+    page.evaluate("() => document.fonts.ready")
     page.screenshot(path='debugging_photos/screenshot2.png')
     logging.info("Logged in and screenshot taken.")
 
@@ -96,9 +100,11 @@ def reserve_restaurant(page, selected_reservation):
         frame_element = page.wait_for_selector('iframe[title="Resy - Book Now"]', timeout=10000)
         frame = frame_element.content_frame()
         frame.wait_for_selector('[data-test-id="order_summary_page-button-book"]', timeout=10000).click()
+        breakpoint()
         confirmation_message = frame.query_selector('.ConfirmationPage__header').inner_text()
         logging.info(f"Reservation confirmation message: {confirmation_message}")
         logging.info("Reservation confirmed.")
+        page.evaluate("() => document.fonts.ready")
         page.screenshot(path='debugging_photos/screenshot3.png')
     except Exception as e:
         logging.exception("Failed to complete reservation")
@@ -176,7 +182,9 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
                 java_script_enabled=True,
                 # no_viewport=True,
                 # bypass_csp=True,
-                locale='US_en'
+                locale='US_en',
+                # geolocation=False,
+                
                 #proxy = {
                 #'server': proxy_server
             #}
@@ -184,6 +192,7 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
 
             page = context.new_page()
             stealth_sync(page)
+                        
             page.on("console", lambda msg: logging.debug(f"PAGE LOG: {msg.text}"))
             page.on("pageerror", lambda msg: logging.error(f"PAGE ERROR: {msg}"))
             page.on("response", lambda response: logging.debug(f"RESPONSE: {response.url} {response.status}"))
@@ -198,10 +207,13 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
             logging.info("Logged in successfully.")
             random_delay(2, 5)
             # Go to restaurant page
-            page.goto(restaurant_link, wait_until='networkidle')
+            # page.goto(restaurant_link, wait_until='networkidle')
+            page.goto(restaurant_link)
+
             # page.wait_for_timeout(20000)
             # Take screenshot for debugging
             # breakpoint()
+            page.evaluate("() => document.fonts.ready")
             page.screenshot(path="debugging_photos/screenshot1.png")
             # breakpoint()
             menu = page.wait_for_selector(f'//div[contains(@class,"ShiftInventory__shift")][h2[text()="{period_wanted.lower()}"]]', timeout=10000)
