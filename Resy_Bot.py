@@ -70,7 +70,7 @@ def login_to_resy(page, email, password):
     except Exception:
         logging.info("No announcement modal to close.")
     # breakpoint()
-    page.click("text=Log in", timeout=10000)
+    page.click("text=Log in", timeout=30000)
     page.click("text=Use Email and Password instead", timeout=30000)
 
     page.fill('input[name="email"]', email)
