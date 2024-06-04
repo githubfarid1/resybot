@@ -28,7 +28,7 @@ email = os.getenv('RESY_EMAIL')
 password = os.getenv('RESY_PASSWORD')
 # headless = False
 headless = True
-headers = {
+'''headers = {
     'accept': 'application/json, text/plain, */*',
     'accept-language': 'en-US,en;q=0.9,id;q=0.8',
     'authorization': 'ResyAPI api_key="VbWk7s3L4KiK5fzlO7JD3Q5EYolJI7n5"',
@@ -48,7 +48,7 @@ headers = {
 }
 
 payload = 'email=aseasease2005b%40gmail.com&password=6EAMGVu8mpwWb7*'
-
+'''
 # made the file mode to overwrite the log file
 logging.basicConfig(filename='bot.log', filemode='w', level=logging.INFO,  format='%(asctime)s - %(levelname)s - %(filename)s - %(lineno)d - %(message)s')
 
@@ -122,42 +122,41 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
 
         # Start the bot
         with sync_playwright() as p:
-            browser_args = [
-                # '--window-size=1300,570',
-                # '--window-position=000,000',
-                # '--disable-dev-shm-usage',
-                # ,
-                # '--disable-features=site-per-process',
-                # '--disable-setuid-sandbox',
-                # '--disable-accelerated-2d-canvas',
-                # '--no-first-run',
-                # '--no-zygote',
-                # '--use-gl=egl',
-                # '--disable-blink-features=AutomationControlled',
-                # '--disable-background-networking',
-                # '--disable-background-timer-throttling',
-                # '--disable-backgrounding-occluded-windows',
-                # '--disable-breakpad',
-                # '--disable-client-side-phishing-detection',
-                # '--disable-component-extensions-with-background-pages',
-                # '--disable-default-apps',
-                # '--disable-extensions',
-                # '--disable-features=Translate',
-                # '--disable-hang-monitor',
+            '''browser_args = [
+                 '--window-size=1300,570',
+                 '--window-position=000,000',
+                 '--disable-dev-shm-usage',
+                 ,
+                 '--disable-features=site-per-process',
+                 '--disable-setuid-sandbox',
+                 '--disable-accelerated-2d-canvas',
+                 '--no-first-run',
+                 '--no-zygote',
+                 '--use-gl=egl',
+                 '--disable-blink-features=AutomationControlled',
+                 '--disable-background-networking',
+                 '--disable-background-timer-throttling',
+                 '--disable-backgrounding-occluded-windows',
+                 '--disable-breakpad',
+                 '--disable-client-side-phishing-detection',
+                 '--disable-component-extensions-with-background-pages',
+                 '--disable-default-apps',
+                 '--disable-extensions',
+                 '--disable-features=Translate',
+                 '--disable-hang-monitor',
                 '--disable-ipc-flooding-protection',
-                # ,
-                # '--disable-prompt-on-repost',
-                # '--disable-renderer-backgrounding',
-                # '--disable-sync',
-                # '--force-color-profile=srgb',
-                # '--metrics-recording-only',
-                # ,
-                # '--password-store=basic',
-                # '--use-mock-keychain',
-                # '--hide-scrollbars',
-                # '--mute-audio'
-            ] 
-            # browser = p.chromium.launch(headless=True, args=browser_args)
+                 ,
+                 '--disable-prompt-on-repost',
+                 '--disable-renderer-backgrounding',
+                 '--disable-sync',
+                 '--force-color-profile=srgb',
+                 '--metrics-recording-only',
+                 ,
+                 '--password-store=basic',
+                 '--use-mock-keychain',
+                 '--hide-scrollbars',
+                 '--mute-audio'
+            ] '''
             wargs = []
             # wargs.append('--enable-logging=stderr')
             wargs.append('--v=1')
@@ -202,7 +201,7 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
             page.goto(restaurant_link, wait_until='networkidle')
             # page.wait_for_timeout(20000)
             # Take screenshot for debugging
-            breakpoint()
+            # breakpoint()
             page.screenshot(path="debugging_photos/screenshot1.png")
             # breakpoint()
             menu = page.wait_for_selector(f'//div[contains(@class,"ShiftInventory__shift")][h2[text()="{period_wanted.lower()}"]]', timeout=10000)
