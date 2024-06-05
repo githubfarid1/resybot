@@ -64,7 +64,7 @@ def login_to_resy(page, email, password):
 
     page.fill('input[name="email"]', email)
     page.fill('input[name="password"]', password)
-    breakpoint()
+    # breakpoint()
     # page.request.post("https://api.resy.com/3/auth/password", headers=headers, data=payload,)
     
     page.click('[name="login_form"] button', timeout=10000)
