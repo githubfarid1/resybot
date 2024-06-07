@@ -142,7 +142,7 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
                 #'server': proxy_server
             #}
             )
-
+            breakpoint()
             page = context.new_page()
             stealth_sync(page)
                         
