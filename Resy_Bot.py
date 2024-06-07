@@ -125,7 +125,7 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
             wargs.append('--disable-popup-blocking')
             wargs.append('--disable-web-security')
 
-            browser = p.firefox.launch(headless=headless, args=wargs)
+            browser = p.chromium.launch(headless=headless, args=wargs)
             proxy_server = "http://kpeqkzlp:0sdrl0jganhc@38.154.227.167:5868"
 
             context = browser.new_context(
@@ -136,7 +136,8 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
                 java_script_enabled=True,
                 # no_viewport=True,
                 # bypass_csp=True,
-                locale='US_en',
+                # locale='US_en',
+        
                 # geolocation=False,
                 
                 #proxy = {
