@@ -9,7 +9,7 @@ import time
 from playwright_stealth import stealth_sync
 import logging
 import re
-
+breakpoint()
 headers = {
     'accept': 'application/json, text/plain, */*',
     'accept-language': 'en-US,en;q=0.9,id;q=0.8',
