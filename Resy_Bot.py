@@ -6,7 +6,6 @@ from dotenv import load_dotenv
 import logging
 import random
 import time
-from playwright.sync_api import sync_playwright
 from playwright_stealth import stealth_sync
 import logging
 import re
@@ -130,8 +129,8 @@ def main(restaurant_link, date_wanted, seats, time_wanted, period_wanted, reserv
 
             context = browser.new_context(
                 user_agent=user_agent,
-                # viewport={'width': random.randint(1200, 1920), 'height': random.randint(900, 1080)},
-                viewport={'width': 1920, 'height': 1080},
+                viewport={'width': random.randint(1200, 1920), 'height': random.randint(900, 1080)},
+                # viewport={'width': 1920, 'height': 1080},
                 permissions=['geolocation', 'notifications'],
                 java_script_enabled=True,
                 # no_viewport=True,
